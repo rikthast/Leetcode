@@ -1,6 +1,8 @@
 package in.rikthast.LinkedLists;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class SinglyLinkedListTest {
@@ -24,5 +26,23 @@ class SinglyLinkedListTest {
       pointer = pointer.next;
       index++;
     }
+  }
+
+  @Test
+  void toEmptyList() {
+    int[] list = new int[]{ };
+    SinglyLinkedList singlyLinkedList = new SinglyLinkedList(list);
+
+    List<Integer> linkedList = singlyLinkedList.toList();
+    assertArrayEquals(list, linkedList.stream().mapToInt(Integer::intValue).toArray());
+  }
+
+  @Test
+  void toList() {
+    int[] list = new int[]{ 1, 2, 3, 4, 5 };
+    SinglyLinkedList singlyLinkedList = new SinglyLinkedList(list);
+
+    List<Integer> linkedList = singlyLinkedList.toList();
+    assertArrayEquals(list, linkedList.stream().mapToInt(Integer::intValue).toArray());
   }
 }
